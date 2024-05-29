@@ -7,7 +7,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a class="navbar-brand" href="inicio">Autotec Servicios</a>
+                    <a class="navbar-brand" href="{{ route('inicioL') }}">Vividi´Salon</a>
                     {{-- <a href="{{ route('/') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a> --}}
@@ -15,7 +15,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('inicio') }}" :active="request()->routeIs('inicio')">
+                    <x-nav-link href="{{ route('inicioL') }}" :active="request()->routeIs('inicioL')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
@@ -27,20 +27,14 @@
                 </div> --}}
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('Clientes.index') }}" :active="request()->routeIs('Clientes.index')">
-                        {{ __('Clientes') }}
+                    <x-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                        {{ __('Usuarios') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('Servicios.index') }}" :active="request()->routeIs('Servicios.index')">
-                        {{ __('Servicios') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('Contactanos.index') }}" :active="request()->routeIs('Contactanos.index')">
-                        {{ __('Consultas') }}
+                    <x-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                        {{ __('Especialidades') }}
                     </x-nav-link>
                 </div>
 
@@ -49,6 +43,18 @@
                         {{ __('Proveedores') }}
                     </x-nav-link>
                 </div> --}}
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                        {{ __('Personal') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                        {{ __('Citas') }}
+                    </x-nav-link>
+                </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('CerrarSesion') }}" :active="request()->routeIs('CerrarSesion')">
@@ -88,35 +94,38 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+
+
         <div class="space-y-1">
-            <x-responsive-nav-link href="{{ route('inicio') }}" :active="request()->routeIs('inicio')">
+            <x-responsive-nav-link href="{{ route('inicioL') }}" :active="request()->routeIs('inicioL')">
                 {{ __('Inicio') }}
             </x-responsive-nav-link>
         </div>
 
-        {{-- <div class="space-y-1">
-            <x-responsive-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
-                {{ __('Usuarios') }}
-            </x-responsive-nav-link>
-        </div> --}}
 
         <div class="space-y-1">
-            <x-responsive-nav-link href="{{ route('Clientes.index') }}" :active="request()->routeIs('Clientes.index')">
-                {{ __('Clientes') }}
+            <x-responsive-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                {{ __('Usuarios') }}
             </x-responsive-nav-link>
         </div>
 
        
 
         <div class="space-y-1">
-            <x-responsive-nav-link href="{{ route('Servicios.index') }}" :active="request()->routeIs('Servicios.index')">
-                {{ __('Servicios') }}
+            <x-responsive-nav-link href="{{ route('inicioL') }}" :active="request()->routeIs('inicioL')">
+                {{ __('Especialidades') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="space-y-1">
-            <x-responsive-nav-link href="{{ route('Contactanos.index') }}" :active="request()->routeIs('Contactanos.index')">
-                {{ __('Consultas') }}
+            <x-responsive-nav-link href="{{ route('inicioL') }}" :active="request()->routeIs('inicioL')">
+                {{ __('Personal') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="space-y-1">
+            <x-responsive-nav-link href="{{ route('inicioL') }}" :active="request()->routeIs('inicioL')">
+                {{ __('Citas') }}
             </x-responsive-nav-link>
         </div>
 

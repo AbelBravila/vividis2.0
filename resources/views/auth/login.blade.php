@@ -1,49 +1,70 @@
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-<link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+<!DOCTYPE html>
+<html lang="en">
 
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            {{-- <x-authentication-card-logo /> --}}
-        </x-slot>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
 
-        <x-validation-errors class="mb-4" />
+    {{-- <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/responsive.css">--}}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> 
 
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endsession
+    <link rel="stylesheet" href="{{ asset('assets/vendors/themify-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/animate/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/foodhut.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alertify.min.css') }}">
+    <title>Login</title>
+</head>
 
-        <form method="POST" action="{{ route('sesion') }}">
-            @csrf
+<body>
 
-            <div>
-                <x-label for="email" value="{{ __('Usuario') }}" />
-                <input
-                    class="form-control"
-                    id="name" type="user" name="name" required="required" autocomplete="name">
-            </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Contraseña') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                    autocomplete="current-password" />
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
+    <header class="vh-100 header" style="max-height: 100%">
+        <div class="overlay2 col-12 container py-5 d-flex justify-content-center align-items-center h-100">
 
-                <div class="form-outline">
-                    <a href="/" class="inline-flex items-center px-4 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 ms-4">
-                        Regresar
-                    </a>
+            {{-- <div class="layout_padding row d-flex justify-content-center align-items-center border"
+                style="font-family: Poppins; background: white; width: 100%; padding-bottom: 50px; font-size: 18px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"> --}}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="login-wrap p-0">
+                            <h3 class="mb-4 text-center text white">Inicio de sesión</h3>
+                            <form method="POST" action="{{ route('sesion') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <input class="form-control" type="user" id="name" name="name"
+                                        placeholder="Usuario" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" name="password" class="form-control"
+                                        placeholder="Contraseña" required>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="form-outline mt-1">
+                                        <a href="/inicio" class="btn btn-secondary">
+                                            Regresar
+                                        </a>
+                                    </div>
+                                    <div class="form-outline mt-1">
+                                        <button type="submit" class="btn btn-primary">
+                                            Iniciar Sesión
+                                        </button>
+                                    </div>
+                                </div>
+
+                                @if (session('status'))
+                                    <div class="form-outline text-center mt-3">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <x-button class="ms-4">
-                    {{ __('Iniciar Sesión') }}
-                </x-button>
-
-
             </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+        </div>
+        </div>
+</body>
+</html>

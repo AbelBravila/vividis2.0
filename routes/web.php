@@ -8,13 +8,25 @@ use App\Http\Controllers\ResultadosController;
 use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/inicio', function () {
+    return view('welcome');
+})->name('inicio');
+
+Route::get('/inicioL', function () {
+    return view('Inicio.index');
+})->name('inicioL');
+
+Route::get('/LandingPage', function () {
+    return view('LandingPage.index');
+})->name('LandingPage');
+
 Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
-Route::get('/inicio', function () {
-    return view('dashboard');
-})->name('inicio')->middleware('auth');
+// Route::get('/inicio', function () {
+//     return view('dashboard');
+// })->name('inicio')->middleware('auth');
 
 Route::resource('Agendar', AgendarController::class);
 Route::get('/PersonalDisponible{id}', [AgendarController::class, 'buscar'])->name('PersonalDisponible');
@@ -23,10 +35,10 @@ Route::post('/sesion', [LoginController::class, 'login'])->name('sesion');
 Route::get('/CerrarSesion', [LoginController::class, 'logout'])->name('CerrarSesion');
 Route::get('/IniciaSesion', [LoginController::class, 'MandarLogin'])->name('IniciaSesion');
 
-// Route::get('/usuarios', [LoginController::class, 'index'])->name('usuarios')->middleware('auth');
-// Route::post('/Crear-usuario', [LoginController::class, 'registrar'])->name('Crear-usuario')->middleware('auth');
-// Route::delete('/EliminarUsuario/{id}', [LoginController::class, 'destroy'])->name('EliminarUsuario')->middleware('auth');
-// Route::put('/ActualizarUsuario{id}', [LoginController::class, 'update'])->name('ActualizarUsuario')->middleware('auth');
+Route::get('/usuarios', [LoginController::class, 'index'])->name('usuarios')->middleware('auth');
+Route::post('/Crear-usuario', [LoginController::class, 'registrar'])->name('Crear-usuario')->middleware('auth');
+Route::delete('/EliminarUsuario/{id}', [LoginController::class, 'destroy'])->name('EliminarUsuario')->middleware('auth');
+Route::put('/ActualizarUsuario{id}', [LoginController::class, 'update'])->name('ActualizarUsuario')->middleware('auth');
 
 // Route::resource('Contactanos', ContactanosController::class)->only([
 //     'store'
@@ -44,3 +56,6 @@ Route::get('/IniciaSesion', [LoginController::class, 'MandarLogin'])->name('Inic
 
 // Route::resource('Servicios', ServicioController::class)->middleware('auth');
 // Route::resource('Resultados', ResultadosController::class)->middleware('auth');
+
+Route::get('/RegistrarPrueba', [LoginController::class, 'registrarPrueba']);
+// Route::get('/RegistrarPrueba', [LoginController::class, 'registrarPrueba'])->middleware(['auth', 'Administrador']);

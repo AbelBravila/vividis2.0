@@ -13,13 +13,38 @@ class LoginController extends Controller
     }    
     public function registrar(Request $request)
     {
+        
         $user = new User();
 
-        $user->name = $request->name;
-        $user->password = $request->password;        
+        if ($request->rol == "Empleado") {
+            $user->name = $request->name;
+            $user->password = $request->password;        
+            $user->rol = $request->rol;        
+            $user->IdEmpleado = $request->IdEmpleado;  
+        }
+        else {
+            $user->name = $request->name;
+            $user->password = $request->password;        
+            $user->rol = $request->rol;        
+            $user->IdEmpleado = 0;  
+        }
 
+        
         $user->save();
         return redirect('usuarios');
+    }
+
+    public function registrarPrueba()
+    {
+        $user = new User();
+
+        $user->name = "Administrador";
+        $user->password = "Administrador";   
+        $user->rol = "Administrador";        
+        $user->IdEmpleado = 0;       
+
+        $user->save();
+        // return redirect('usuarios');
     }
 
     public function MandarLogin(){
@@ -31,13 +56,13 @@ class LoginController extends Controller
     {
         $credenctials = [
             "name" => $request->name,
-            "password" => $request->password
+            "password" => $request->password,
         ];        
 
         if(Auth::attempt($credenctials)){
             
             $request->session()->regenerate();
-            return redirect()->intended(route('inicio'));
+            return redirect()->intended(route('inicioL'));
         }
         else
         {            

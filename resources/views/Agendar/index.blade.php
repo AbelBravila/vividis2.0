@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" >
     {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
-        <a class="navbar-brand" href="/">Vividi´Salon</a>
+        <a class="navbar-brand" href="/inicio">Vividi´Salon</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false">
@@ -25,7 +25,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio</a>
+                    <a class="nav-link" href="/inicio">Inicio</a>
                 </li>
 
             </ul>

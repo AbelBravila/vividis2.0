@@ -16,7 +16,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top" >
     {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
-        <a class="navbar-brand" href="/">Vividi´Salon</a>
+        <a class="navbar-brand" href="/inicio">Vividi´Salon</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false">
@@ -36,7 +36,11 @@
                 <li class="nav-item">
                     <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('IniciaSesion') }}" class="btn border border-secondary btn-transparent ml-xl-4">Iniciar Sesión</a>
+                </li>
             </ul>
+      
 
             {{-- <ul class="navbar-nav">
                 <li class="nav-item">
@@ -275,58 +279,7 @@
             </div>
 
         </section>
-        <!-- Termina Testimonios -->
-
-        <!-- Contactanos -->
-
-        {{-- <section id="contactanos" class="map_section">
-            <div class="d-flex justify-content-center align-items-center h-100">
-
-
-                <div class="form_container">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1">
-                            <form method="POST" action="{{ route('Contactanos.store') }}">
-                                @csrf
-                                <div class="text-center">
-                                    <h3>Contáctanos</h3>
-                                </div>
-                                <div>
-                                    <input type="text" name="NOMBRE_CONTACTANOS" placeholder="Nombre"
-                                        class="pt-3" required>
-                                </div>
-                                <div>
-                                    <input type="text" name="NUMERO_TELEFONO_CONTACTANOS"
-                                        placeholder="Número de Telefono" required>
-                                </div>
-                                <div>
-                                    <input type="email" name="CORREO_CONTACTANOS" placeholder="Correo" required>
-                                </div>
-                                <div>
-                                    <input type="text" name="MENSAJE_CONTACTANOS" placeholder="Mensaje" required>
-                                </div>
-
-                                <div>
-                                    <input type="hidden" name="ESTADO_CONTACTANOS" value="Sin revisar" required>
-                                </div>
-                                <div>
-                                    <button type="submit">Enviar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-
-        {{-- <section class="buy_section layout_padding">
-        </section> --}}
-
-        <!-- Termina Contactanos -->
-
-
-            <!-- Footer -->
-{{-- <footer class="text-center text-lg-start text-muted" style="height: auto"> --}}
+    
     <section class="about_section" style="padding: 30px 0px 0px 0px;">
       <div class="container text-center text-md-start ">
         <!-- Grid row -->

@@ -51,6 +51,13 @@ footer {
     background-size: cover;
   }
 
+  .about_section2 {
+    background-image: url(../images/about-bg.png);
+    /* background-image: url(../images/bg-3.png); */
+    /* background-image: url(../images/about-bg.png); */
+    background-size: cover;
+  }
+
   .about_section .img-box img {
     width: 100%;
   }
