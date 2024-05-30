@@ -37,7 +37,7 @@
                     <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Especialidades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Personal</a>
+                    <a class="nav-link" href="{{ route('personal') }}" style="color:black;">Personal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Citas</a>

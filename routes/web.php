@@ -6,6 +6,8 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultadosController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\VistasController;
+use app\Http\Controllers\PersonalCRUDCONTROLLER;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/inicio', function () {
@@ -23,6 +25,9 @@ Route::get('/LandingPage', function () {
 Route::get('/', function () {
     return view('welcome');
 })->name('/');
+
+Route::get("/personal",[VistasController::class,"personalpage"])->name("personal");
+Route::post("/Crear-Personal",[PersonalCRUDCONTROLLER::class,"registrar"])->name("Crear-Personal")->middleware("auth");
 
 // Route::get('/inicio', function () {
 //     return view('dashboard');
