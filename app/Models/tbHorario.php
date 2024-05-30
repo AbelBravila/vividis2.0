@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tbTrabajos extends Model
+class tbHorario extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'IdTrabajo';
+
+    protected $primaryKey = 'IdHorario';
     protected $fillable = [
-        'NombreTrabajo', 
-        'TiempoEstimado', 
+        'Horario', 
+        'Tmanana', 
+        'Ttarde',
         'Estado'
     ];
 }

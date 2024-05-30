@@ -6,6 +6,10 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultadosController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EspecialidadesController;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\TrabajosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/inicio', function () {
@@ -28,14 +32,24 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->name('inicio')->middleware('auth');
 
-Route::resource('Agendar', AgendarController::class);
+Route::resource('Agendar', AgendarController::class)->middleware('auth');
+Route::resource('Trabajos', TrabajosController::class)->middleware('auth');
+Route::resource('Horarios', HorarioController::class)->middleware('auth');
+Route::resource('Personal', PersonalController::class)->middleware('auth');
+Route::resource('Especialidades', EspecialidadesController::class)->middleware('auth');
+
+Route::get('/EspecialidadesS', [EspecialidadesController::class, 'buscar'])->name('EspecialidadesS')->middleware('auth');
+Route::get('/HorariosS', [HorarioController::class, 'buscar'])->name('HorariosS')->middleware('auth');
+Route::get('/TrabajosS', [TrabajosController::class, 'buscar'])->name('TrabajosS')->middleware('auth');
+Route::get('/PersonalS', [PersonalController::class, 'buscar'])->name('PersonalS')->middleware('auth');
 Route::get('/PersonalDisponible{id}', [AgendarController::class, 'buscar'])->name('PersonalDisponible');
+Route::get('/FechasDisponibles{id}', [AgendarController::class, 'fechasDisponible'])->name('FechasDisponibles');
 
 Route::post('/sesion', [LoginController::class, 'login'])->name('sesion');
 Route::get('/CerrarSesion', [LoginController::class, 'logout'])->name('CerrarSesion');
 Route::get('/IniciaSesion', [LoginController::class, 'MandarLogin'])->name('IniciaSesion');
 
-Route::get('/usuarios', [LoginController::class, 'index'])->name('usuarios')->middleware('auth');
+Route::get('/usuarios', [LoginController::class, 'index'])->name('usuarios')->middleware(['auth', 'Administrador']);
 Route::post('/Crear-usuario', [LoginController::class, 'registrar'])->name('Crear-usuario')->middleware('auth');
 Route::delete('/EliminarUsuario/{id}', [LoginController::class, 'destroy'])->name('EliminarUsuario')->middleware('auth');
 Route::put('/ActualizarUsuario{id}', [LoginController::class, 'update'])->name('ActualizarUsuario')->middleware('auth');

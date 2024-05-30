@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tbTrabajos;
+use App\Models\tbHorario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TrabajosController extends Controller
+class HorarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $trabajos = DB::select("Select * from tb_trabajos where Estado = 'Activo'");        
-        return view('Trabajos.index', compact('trabajos'));
+        $horarios = DB::select("Select * from tb_horarios where Estado = 'Activo'");        
+        return view('Horarios.index', compact('horarios'));
     }
 
     /**
@@ -31,22 +31,28 @@ class TrabajosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'NombreTrabajo' => 'required|string|min:1|max:100',
-            'TiempoEstimado' => 'required|integer|min:1|max:10000',            
+            'Horario' => 'required|string|min:1|max:100',
+            'Tmanana' => 'required|integer|min:1|max:10000',
+            'Ttarde' => 'required|string|min:1|max:100',
             'Estado' => 'required|string|min:1|max:10000'
         ]);
 
-        tbTrabajos::create($request->all()); 
+        tbHorario::create($request->all()); 
 
-        return redirect()->route('Trabajos.index');
+        return redirect()->route('Horarios.index');
     }
 
     public function buscar()
     {
-        $busqueda = $_GET['NombreTrabajo'];
-        $trabajos = DB::select("Select * from tb_trabajos where Estado = 'Activo' AND NombreTrabajo LIKE '%$busqueda%'");        
-        return view('Trabajos.index', compact('trabajos'));
+        $busqueda = $_GET['Horario'];
+        $horarios = DB::select("Select * from tb_horarios where Estado = 'Activo' AND Horario LIKE '%$busqueda%'");        
+        return view('Horarios.index', compact('horarios'));
     }
+
+
+    /**
+     * Display the specified resource.
+     */
     public function show(string $id)
     {
         //
@@ -66,15 +72,16 @@ class TrabajosController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'NombreTrabajo' => 'required|string|min:1|max:100',
-            'TiempoEstimado' => 'required|integer|min:1|max:10000', 
+            'Horario' => 'required|string|min:1|max:100',
+            'Tmanana' => 'required|integer|min:1|max:10000',
+            'Ttarde' => 'required|string|min:1|max:100',
             'Estado' => 'required|string|min:1|max:10000'
         ]);
 
-        $trabajo = tbTrabajos::findOrFail($id);
-        $trabajo->update($request->all());        
+        $horario = tbHorario::findOrFail($id);
+        $horario->update($request->all());        
 
-        return redirect()->route('Trabajos.index');
+        return redirect()->route('Horarios.index');
     }
 
     /**
@@ -82,13 +89,13 @@ class TrabajosController extends Controller
      */
     public function destroy(string $id)
     {
-        $trabajo = tbTrabajos::findOrFail($id);
-        $trabajo->update([
+        $horario = tbHorario::findOrFail($id);
+        $horario->update([
             'Estado' => "Inactivo",
             ]);      
       
         // $user = User::findOrFail($id);
         // $user->delete();
-        return redirect()->route('Trabajos.index');
+        return redirect()->route('Horarios.index');
     }
 }

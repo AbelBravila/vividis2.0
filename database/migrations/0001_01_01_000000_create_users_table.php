@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');                                        
             $table->string('password');
             $table->string('rol');
+            $table->string('Estado');
+            $table->string('Telefono');
             $table->integer('IdEmpleado');
             $table->rememberToken();
             $table->timestamps();

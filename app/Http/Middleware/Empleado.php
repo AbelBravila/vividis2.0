@@ -20,6 +20,8 @@ class Empleado
             return $next($request);
         }
 
+
+        
         abort(401);       
     }
 }

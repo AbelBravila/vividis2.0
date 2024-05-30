@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_trabajos', function (Blueprint $table) {
-            $table->id("IdTrabajo");
-            $table->string("NombreTrabajo", 255);
-            $table->double("TiempoEstimado");    
-            $table->string("Estado", 255);                  
+        Schema::create('tb_horarios', function (Blueprint $table) {
+            $table->id("IdHorario");
+            $table->string("Horario");
+            $table->integer("Tmanana");
+            $table->integer("Ttarde");  
+            $table->string("Estado");
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_trabajos');
+        Schema::dropIfExists('tb_horarios');
     }
 };

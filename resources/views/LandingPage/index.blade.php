@@ -30,14 +30,25 @@
                     <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Inicio</a>
                 </li>
 
+                @if (Auth::user()->rol == 'Administrador')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('usuarios') }}" style="color:black;">Usuarios</a>
                 </li>
+                @endif 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Especialidades</a>
+                    <a class="nav-link" href="{{ route('Personal.index') }}" style="color:black;">Personal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Personal</a>
+                    <a class="nav-link" href="{{ route('Trabajos.index') }}" style="color:black;">Trabajos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('Especialidades.index') }}" style="color:black;">Especialidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('Horarios.index') }}" style="color:black;">Horarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('Horarios.index') }}" style="color:black;">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('inicioL') }}" style="color:black;">Citas</a>
@@ -50,7 +61,7 @@
                     <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ">Agenda tu Cita</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('IniciaSesion') }}" class="btn border border-danger btn-danger ">Cerrar Sesión</a>
+                    <a href="{{ route('CerrarSesion') }}" class="btn border border-danger btn-danger ">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>

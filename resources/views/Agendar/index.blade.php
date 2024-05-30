@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vividi´Salon</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" /> 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">  -->
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" >
-    {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
+    <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top">
+        {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
         <a class="navbar-brand" href="/inicio">Vividi´Salon</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -32,7 +33,8 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                    <a href="{{ route('Agendar.index') }}"
+                        class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
                 </li>
             </ul>
 
@@ -42,7 +44,7 @@
                 </li>
             </ul> --}}
 
-              {{-- <ul class="navbar-nav">
+            {{-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#contactanos">Agenda tu Cita</a>
                 </li>
@@ -61,17 +63,24 @@
                         </div>
                     </div> --}}
                     <div class="col-md-12" style="display: flex; flex-direction: column;">
-                        <div class="detail-box">
-                            <h2 class="custom_heading">
-                                Trabajos
-                                <span>
-                                    Disponibles
-                                </span>
-                            </h2>                         
+                        <div class="col-12" style="justify-content: space-between; display:flex;">
+                            <div>
+                                <h2 class="custom_heading ">
+                                    Trabajos
+                                    <span>
+                                        Disponibles
+                                    </span>
+                                </h2>
+                            </div>
+                            <div>
+                                <a href="{{ route('inicio') }}"
+                                    class="btn border border-secondary btn-transparent ml-xl-4">Regresar</a>
+                            </div>
                         </div>
                         @foreach ($Trabajos as $trabajo)
-                        <a href="{{ route('PersonalDisponible',  $trabajo->IdTrabajo) }}" class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{$trabajo->NombreTrabajo}}</a>
-                        {{-- <button class="btn border border-secondary btn-transparent ml-xl-4"></button>                                                         --}}
+                            <a href="{{ route('PersonalDisponible', $trabajo->IdTrabajo) }}"
+                                class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{ $trabajo->NombreTrabajo }}</a>
+                            {{-- <button class="btn border border-secondary btn-transparent ml-xl-4"></button>                                                         --}}
                         @endforeach
                     </div>
                 </div>

@@ -36,9 +36,16 @@
                 <li class="nav-item">
                     <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
                 </li>
+            
+                @if (Auth::check())
                 <li class="nav-item">
-                    <a href="{{ route('IniciaSesion') }}" class="btn border border-secondary btn-transparent ml-xl-4">Iniciar Sesión</a>
+                    <a href="{{ route('CerrarSesion') }}" class="btn border border-danger btn-danger ml-xl-4">Cerrar Sesión</a>
                 </li>
+                @else
+                <li class="nav-item">
+                    <a href="{{ route('IniciaSesion') }}" class="btn border border-secondary btn-secondary ml-xl-4">Iniciar Sesión</a>
+                </li>
+                @endif            
             </ul>
       
 

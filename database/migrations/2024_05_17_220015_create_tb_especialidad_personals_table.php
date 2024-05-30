@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id("IdEspecialidadPersonal");
             $table->integer("IdPersonal");
             $table->integer("IdTrabajo");   
+            $table->string("Estado");   
             $table->timestamps();
         });
     }

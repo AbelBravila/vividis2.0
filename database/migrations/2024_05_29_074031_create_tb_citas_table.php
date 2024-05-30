@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_personal', function (Blueprint $table) {
-            $table->id("IdPersonal");
-            $table->string("NombrePersona", 255);
-            $table->integer("IdHorario");
-            $table->string("Horario");            
-            $table->string("Telefono");            
+        Schema::create('tb_citas', function (Blueprint $table) {
+            $table->id("IdCita");
+            $table->integer("IdPersonal");
+            $table->integer("IdTrabajo");
+            $table->string("FechaCita");
+            $table->integer("Tmanana");  
+            $table->integer("Ttarde");  
+            $table->integer("IdCliente");
+            $table->string("Cliente");            
             $table->string("Estado");            
             $table->timestamps();
         });
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_personal');
+        Schema::dropIfExists('tb_citas');
     }
 };

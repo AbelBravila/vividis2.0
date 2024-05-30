@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class Administrador
+class Cliente
 {
     /**
      * Handle an incoming request.
@@ -19,9 +19,7 @@ class Administrador
         if (Auth::user()->rol=="Administrador") {
             return $next($request);
         }
-
-        return redirect()->route('inicioL');
-
-        // abort(401);        
+        
+        return redirect()->intended(route('inicioL'));
     }
 }
