@@ -79,7 +79,7 @@
                         <div class="detail-box">
                             <h2 class="custom_heading">
                                 Sobre nosotros
-                                <span>
+                                <span style="color: pink;">
                                     Vividi´Salon
                                 </span>
                             </h2>
@@ -111,7 +111,7 @@
                 <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
                     <div class="col-md-8 offset-md-2">
                         <h2 class="custom_heading" style="text-align: center;">
-                            Nuestros <span>Servicios</span>
+                            Nuestros <span style="color: pink;">Servicios</span>
                         </h2>
                         <div class="container layout_padding2">
                             <div class="row">

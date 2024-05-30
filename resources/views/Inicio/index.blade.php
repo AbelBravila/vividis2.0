@@ -25,7 +25,7 @@
                     <div class="detail-box">
                         <h2 class="custom_heading">
                             Sobre nosotros
-                            <span>
+                            <span style="color: pink;">
                                 Vividi´Salon
                             </span>
                         </h2>

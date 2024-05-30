@@ -118,7 +118,7 @@
         </div>
 
         <div class="space-y-1">
-            <x-responsive-nav-link href="{{ route('inicioL') }}" :active="request()->routeIs('inicioL')">
+            <x-responsive-nav-link href="{{ route('personal') }}" :active="request()->routeIs('personal')">
                 {{ __('Personal') }}
             </x-responsive-nav-link>
         </div>

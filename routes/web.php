@@ -28,6 +28,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
+Route::get("/personal",[VistasController::class,"personalpage"])->name("personal");
+Route::post("/Crear-Personal",[PersonalCRUDCONTROLLER::class,"registrar"])->name("Crear-Personal")->middleware("auth");
+
 // Route::get('/inicio', function () {
 //     return view('dashboard');
 // })->name('inicio')->middleware('auth');

@@ -71,7 +71,7 @@
       <!--inicio Section End-->
     <!-- Sobre Nosotros -->
     <div id="inicio">
-        <section class="about_section layout_padding">
+        <section id="nosotros" class="about_section layout_padding">
             <div class="container">
                 <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
                     <div class="col-md-6">
@@ -86,7 +86,7 @@
                         <div class="detail-box">
                             <h2 class="custom_heading">
                                 Sobre nosotros
-                                <span>
+                                <span style="color: pink;">
                                     Vividi´Salon
                                 </span>
                             </h2>
@@ -118,7 +118,7 @@
                 <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
                     <div class="col-md-8 offset-md-2">
                         <h2 class="custom_heading" style="text-align: center;">
-                            Nuestros <span>Servicios</span>
+                            Nuestros <span style="color: pink;">Servicios</span>
                         </h2>
                         <div class="container layout_padding2">
                             <div class="row">
@@ -151,7 +151,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="img_box">
-                                        <img src="images/masaje-facial.png" alt="">
+                                        <img src="images/masaje-facial.png" alt="MASAJE FACIAL">
                                     </div>
                                     <div class="detail_box">
                                         <h6>
@@ -209,11 +209,11 @@
         </section> --}}
 
         <!-- Testimonios -->
-        <section class="client_section layout_padding2">
+        <section id="testimonios" class="client_section layout_padding2">
             <div class="container">
                 <h2 class="custom_heading text-center">
                     Lo que dicen nuestros
-                    <span>
+                    <span style="color: pink;">
                         Clientes
                     </span>
                 </h2>
@@ -329,13 +329,13 @@
               <a href="#inicio" class="text-reset">INICIO</a>
             </p>
             <p>
-              <a href="#cita" class="text-reset">AGENDAR CITA</a>
-            </p>
-            <p>
-              <a href="#faqs" class="text-reset">FAQs</a>
+              <a href="{{ route('Agendar.index') }}" class="text-reset">AGENDAR CITA</a>
             </p>
             <p>
               <a href="#nosotros" class="text-reset">NOSOTROS</a>
+            </p>
+            <p>
+              <a href="#testimonios" class="text-reset">TESTIMONIOS</a>
             </p>
           </div>
           <!-- Grid column -->
