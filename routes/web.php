@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgendarController;
+use App\Http\Controllers\CitasController;
 use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\LoginController;
@@ -28,8 +29,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
-Route::get("/personal",[VistasController::class,"personalpage"])->name("personal");
-Route::post("/Crear-Personal",[PersonalCRUDCONTROLLER::class,"registrar"])->name("Crear-Personal")->middleware("auth");
 
 // Route::get('/inicio', function () {
 //     return view('dashboard');
@@ -40,12 +39,14 @@ Route::resource('Trabajos', TrabajosController::class)->middleware('auth');
 Route::resource('Horarios', HorarioController::class)->middleware('auth');
 Route::resource('Personal', PersonalController::class)->middleware('auth');
 Route::resource('Especialidades', EspecialidadesController::class)->middleware('auth');
+Route::resource('Citas', CitasController::class)->middleware('auth');
 
 Route::get('/EspecialidadesS', [EspecialidadesController::class, 'buscar'])->name('EspecialidadesS')->middleware('auth');
 Route::get('/HorariosS', [HorarioController::class, 'buscar'])->name('HorariosS')->middleware('auth');
 Route::get('/TrabajosS', [TrabajosController::class, 'buscar'])->name('TrabajosS')->middleware('auth');
 Route::get('/PersonalS', [PersonalController::class, 'buscar'])->name('PersonalS')->middleware('auth');
 Route::get('/PersonalDisponible{id}', [AgendarController::class, 'buscar'])->name('PersonalDisponible');
+Route::get('/AgendarCita/{id}/{idTrabajo}', [AgendarController::class, 'Agendar'])->name('AgendarCita');
 Route::get('/FechasDisponibles{id}', [AgendarController::class, 'fechasDisponible'])->name('FechasDisponibles');
 
 Route::post('/sesion', [LoginController::class, 'login'])->name('sesion');
@@ -64,12 +65,6 @@ Route::put('/ActualizarUsuario{id}', [LoginController::class, 'update'])->name('
 // Route::resource('Contactanos', ContactanosController::class)->only([
 //     'index', 'update', 'destroy'
 // ])->middleware('auth');
-
-// Route::resource('Clientes', ClienteController::class)->middleware('auth');
-// Route::get('/ClientesS', [ClienteController::class, 'buscar'])->name('ClientesS')->middleware('auth');
-
-// Route::get('/ContactanosS', [ContactanosController::class, 'buscar'])->name('ContactanosS')->middleware('auth');
-// Route::get('/ServiciosS', [ServicioController::class, 'buscar'])->name('CitasS')->middleware('auth');
 
 // Route::resource('Servicios', ServicioController::class)->middleware('auth');
 // Route::resource('Resultados', ResultadosController::class)->middleware('auth');

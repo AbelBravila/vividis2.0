@@ -27,29 +27,31 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
+                    <a class="nav-link" href="{{route('inicio')}}" style="color:black;">Inicio</a>
                 </li>
+                @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('Citas.index')}}" style="color:black;">Citas Agendadas</a>
+                </li>
+                @endif
 
             </ul>
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="{{ route('Agendar.index') }}"
-                        class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                    <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
                 </li>
+            
+                @if (Auth::check())
+                <li class="nav-item">
+                    <a href="{{ route('CerrarSesion') }}" class="btn border border-danger btn-danger ml-xl-4">Cerrar Sesión</a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a href="{{ route('IniciaSesion') }}" class="btn border border-secondary btn-secondary ml-xl-4">Iniciar Sesión</a>
+                </li>
+                @endif            
             </ul>
-
-            {{-- <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{{ route('IniciaSesion') }}" class="btn border btn-secondary ml-xl-4">Iniciar Sesión</a>
-                </li>
-            </ul> --}}
-
-            {{-- <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#contactanos">Agenda tu Cita</a>
-                </li>
-            </ul> --}}
         </div>
     </nav>
 
@@ -81,9 +83,11 @@
                             </div>
                         </div>
 
-                        @foreach ($PersonalDisponible as $personal)
-                            <a data-bs-toggle="modal" data-bs-target="#modalGuardar{{ $personal->IdPersonal }}"
-                                class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{ $personal->NombrePersona }}</a>
+                        @foreach ($PersonalDisponible as $personal)                        
+                            {{-- <a data-bs-toggle="modal" data-bs-target="#modalGuardar{{ $personal->IdPersonal }}"
+                                class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{ $personal->NombrePersona }}</a> --}}
+                                <a  href="{{ route('AgendarCita', ['id' => $personal->IdPersonal, 'idTrabajo' => $Trabajos[0]->IdTrabajo]) }}"
+                                    class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{ $personal->NombrePersona }}</a>
 
                             <div id="datos-container">
                                 <!-- Aquí se mostrarán los datos -->
@@ -196,4 +200,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
-< /html>
+</html>

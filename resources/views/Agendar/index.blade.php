@@ -26,16 +26,30 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/inicio">Inicio</a>
+                    <a class="nav-link" href="{{route('inicio')}}" style="color:black;">Inicio</a>
                 </li>
+                @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('Citas.index')}}" style="color:black;">Citas Agendadas</a>
+                </li>
+                @endif
 
             </ul>
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="{{ route('Agendar.index') }}"
-                        class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                    <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
                 </li>
+            
+                @if (Auth::check())
+                <li class="nav-item">
+                    <a href="{{ route('CerrarSesion') }}" class="btn border border-danger btn-danger ml-xl-4">Cerrar Sesión</a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a href="{{ route('IniciaSesion') }}" class="btn border border-secondary btn-secondary ml-xl-4">Iniciar Sesión</a>
+                </li>
+                @endif            
             </ul>
 
             {{-- <ul class="navbar-nav">
@@ -79,7 +93,7 @@
                         </div>
                         @foreach ($Trabajos as $trabajo)
                             <a href="{{ route('PersonalDisponible', $trabajo->IdTrabajo) }}"
-                                class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{ $trabajo->NombreTrabajo }}</a>
+                                class="btn border m-2 border-secondary btn-transparent ml-xl-4">{{ $trabajo->NombreTrabajo }} ------ Tiempo Estimado {{$trabajo->TiempoEstimado}} Hora</a>
                             {{-- <button class="btn border border-secondary btn-transparent ml-xl-4"></button>                                                         --}}
                         @endforeach
                     </div>

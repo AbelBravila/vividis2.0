@@ -27,8 +27,13 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#inicio" style="color:black;">Inicio</a>
+                    <a class="nav-link" href="{{route('inicio')}}" style="color:black;">Inicio</a>
                 </li>
+                @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('Citas.index')}}" style="color:black;">Citas Agendadas</a>
+                </li>
+                @endif
 
             </ul>
 
