@@ -17,9 +17,9 @@ Route::get('/inicio', function () {
     return view('welcome');
 })->name('inicio');
 
-Route::get('/inicioL', function () {
-    return view('Inicio.index');
-})->name('inicioL');
+Route::get('/vistaAdmin', function () {
+    return view('AdminPage.VistaAdmin');
+})->name('vistaAdmin');
 
 Route::get('/LandingPage', function () {
     return view('LandingPage.index');
@@ -29,6 +29,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('/');
 
+//Route::get("/personal",[VistasController::class,"personalpage"])->name("personal");
+//Route::post("/Crear-Personal",[PersonalCRUDCONTROLLER::class,"registrar"])->name("Crear-Personal")->middleware("auth");
 
 // Route::get('/inicio', function () {
 //     return view('dashboard');

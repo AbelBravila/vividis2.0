@@ -76,7 +76,7 @@ class LoginController extends Controller
                 return redirect()->intended(route('inicio'));
             } else {
                 $request->session()->regenerate();
-                return redirect()->intended(route('inicioL'));
+                return redirect()->intended(route('vistaAdmin'));
             }
 
         } else {
