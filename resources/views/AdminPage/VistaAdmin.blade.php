@@ -39,7 +39,7 @@
                     <li><a href="{{ route('Especialidades.index') }}"><span class="las la-gem"></span><small>Especialidades</small></a></li>
                     <li><a href="{{ route('Horarios.index') }}"><span class="las la-clock"></span><small>Horarios</small></a></li>
                     <li><a href="{{ route('Clientes.index') }}"><span class="las la-user-check"></span><small>Clientes</small></a></li>
-                    <li><a href="{{ route('Citas.index') }}"><span class="las la-calendar-check"></span><small>Citas</small></a></li>
+                    <li><a href="{{ route('Citas.IndexGeneral') }}"><span class="las la-calendar-check"></span><small>Citas</small></a></li>
                 </ul>
             </div>
         </div>
