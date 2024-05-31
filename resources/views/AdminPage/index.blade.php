@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +54,7 @@
             </ul> --}}
         </div>
     </nav>
-<!--inicio Section Start-->
+  <!--inicio Section Start-->
 <section id="inicio" class="section">
         <div id="banner" style="padding-top: 60px;">
       <img src="images\banner.jpg" alt="banner" style="width:100%;">
@@ -164,7 +163,7 @@
 
 
         <!-- Testimonios -->
-        <section class="client_section layout_padding2">
+       <section class="client_section layout_padding2">
             <div class="container">
                 <h2 class="custom_heading text-center">
                     Lo que dicen nuestros
@@ -246,7 +245,7 @@
           <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
+           <h6 class="text-uppercase fw-bold mb-4">
               <i class="fas fa-gem me-3"></i>Vividis Salon Profesional
             </h6>
             <img src="images\lo.png" style="width: 250px;">
@@ -305,19 +304,19 @@
             <p><i class="fas fa-phone me-3"></i> +502 3997-6020</p>
           </div>
           <!-- Grid column -->
-        </div>
+       </div>
         <!-- Grid row -->
-      </div>
+     </div>
     </section>
     <!-- Section: Links  -->
   
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
       © 2024 Copyright:Vividis Salon Profesional
       <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ADK</a>
     </div>
     <!-- Copyright -->
-  {{-- </footer> --}}
+{{-- </footer> --}}
   <!-- Footer -->
 </body>
 
