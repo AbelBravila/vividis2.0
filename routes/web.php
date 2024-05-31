@@ -41,7 +41,13 @@ Route::resource('Trabajos', TrabajosController::class)->middleware('auth');
 Route::resource('Horarios', HorarioController::class)->middleware('auth');
 Route::resource('Personal', PersonalController::class)->middleware('auth');
 Route::resource('Especialidades', EspecialidadesController::class)->middleware('auth');
-Route::resource('Citas', CitasController::class)->middleware('auth');
+Route::resource('Clientes', ClienteController::class)->middleware('auth');
+Route::get('/CitasGeneral', [CitasController::class, 'indexGeneral'])->name('Citas.IndexGeneral')->middleware(['auth', 'Administrador']);
+// Route::resource('Citas', CitasController::class)->middleware('auth');
+
+Route::resource('Citas', CitasController::class)->only([
+         'index', 'destroy'
+     ])->middleware('auth');
 
 Route::get('/EspecialidadesS', [EspecialidadesController::class, 'buscar'])->name('EspecialidadesS')->middleware('auth');
 Route::get('/HorariosS', [HorarioController::class, 'buscar'])->name('HorariosS')->middleware('auth');

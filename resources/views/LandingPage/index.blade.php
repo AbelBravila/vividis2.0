@@ -15,7 +15,7 @@
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">  -->
 </head>
 
-<body>
+<body style="background-color: #f1f4f9">
 <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
@@ -31,15 +31,15 @@
 
             <div class="side-menu">
                 <ul>
-                    <li><a href="{{ route('vistaAdmin') }}" class="active"><span class="las la-home"></span><small>Inicio</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('vistaAdmin') }}" class="active"><span class="las la-home"></span><small>Inicio</small></a></li>
                     @if (Auth::user()->rol == 'Administrador')
-                        <li><a href="{{ route('usuarios') }}"><span class="las la-user-alt"></span><small>Usuarios</small></a></li>
+                        <li><a style="text-decoration: none" href="{{ route('usuarios') }}"><span class="las la-user-alt"></span><small>Usuarios</small></a></li>
                     @endif
-                    <li><a href="{{ route('Trabajos.index') }}"><span class="las la-cut"></span><small>Trabajos</small></a></li>
-                    <li><a href="{{ route('Especialidades.index') }}"><span class="las la-gem"></span><small>Especialidades</small></a></li>
-                    <li><a href="{{ route('Horarios.index') }}"><span class="las la-clock"></span><small>Horarios</small></a></li>
-                    <li><a href=""><span class="las la-user-check"></span><small>Clientes</small></a></li>
-                    <li><a href=""><span class="las la-calendar-check"></span><small>Citas</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('Trabajos.index') }}"><span class="las la-cut"></span><small>Trabajos</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('Especialidades.index') }}"><span class="las la-gem"></span><small>Especialidades</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('Horarios.index') }}"><span class="las la-clock"></span><small>Horarios</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('Clientes.index') }}"><span class="las la-user-check"></span><small>Clientes</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('Citas.IndexGeneral') }}"><span class="las la-calendar-check"></span><small>Citas</small></a></li>
                 </ul>
             </div>
         </div>
@@ -65,10 +65,10 @@
         </header>
 
         <main>
-            <div class="page-header">
+            {{-- <div class="page-header">
                 <h1>@yield('page-title', 'Dashboard')</h1>
                 <small>@yield('breadcrumb', 'Home / Dashboard')</small>
-            </div>
+            </div> --}}
 
             <div class="page-content">
                 @yield('contenido')

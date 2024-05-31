@@ -19,7 +19,7 @@ class AgendarController extends Controller
 
     public function buscar(string $id)
     {
-        $PersonalDisponible=DB::select("SELECT ep.IdPersonal, p.NombrePersona, t.NombreTrabajo, t.TiempoEstimado FROM tb_especialidad_personal ep JOIN tb_personal p ON ep.IdPersonal = p.IdPersonal JOIN tb_trabajos t ON ep.IdTrabajo = t.IdTrabajo where ep.IdTrabajo = $id");       
+        $PersonalDisponible=DB::select("SELECT ep.IdPersonal, p.NombrePersona, t.NombreTrabajo, t.TiempoEstimado FROM tb_especialidad_personal ep JOIN tb_personal p ON ep.IdPersonal = p.IdPersonal JOIN tb_trabajos t ON ep.IdTrabajo = t.IdTrabajo where ep.IdTrabajo = $id GROUP BY p.NombrePersona");       
         $Trabajos=DB::select("SELECT IdTrabajo, TiempoEstimado FROM tb_trabajos where IdTrabajo = $id");
         return view('Agendar.personalAgenda', compact('PersonalDisponible', 'Trabajos'));
     }
@@ -34,7 +34,7 @@ class AgendarController extends Controller
                 DATE_ADD(FechaCita, INTERVAL 1 DAY) AS FechaCita,
                 DayCount + CASE WHEN WEEKDAY(DATE_ADD(FechaCita, INTERVAL 1 DAY)) < 5 THEN 1 ELSE 0 END AS DayCount
             FROM DateRange
-            WHERE DayCount < 8 OR WEEKDAY(DATE_ADD(FechaCita, INTERVAL 1 DAY)) >= 5
+            WHERE DayCount < 9 OR WEEKDAY(DATE_ADD(FechaCita, INTERVAL 1 DAY)) >= 5
         ),
         Prueba AS (
             SELECT 
@@ -67,7 +67,7 @@ class AgendarController extends Controller
         
         SELECT * FROM Prueba;");
         $PersonalDisponible=DB::select("SELECT ep.IdPersonal, p.NombrePersona, t.NombreTrabajo, t.TiempoEstimado FROM tb_especialidad_personal ep JOIN tb_personal p ON ep.IdPersonal = p.IdPersonal JOIN tb_trabajos t ON ep.IdTrabajo = t.IdTrabajo where ep.IdPersonal = $id");       
-       return view('Agendar.Agendar', compact('PersonalDisponible', 'fechasDisponibles', 'Trabajos'));
+        return view('Agendar.Agendar', compact('PersonalDisponible', 'fechasDisponibles', 'Trabajos'));
     }
 
     public function fechasDisponible(string $id){

@@ -26,7 +26,7 @@ class CitasController extends Controller
         CASE 
             WHEN tc.Tmanana > 0 THEN 'Mañana'
             WHEN tc.Ttarde > 0 THEN 'Tarde'
-            ELSE 'Indefinido' -- por si acaso ambos son 0, aunque no se mencionó este caso
+            ELSE 'Indefinido' 
         END AS Horario
     FROM 
         tb_citas tc 
@@ -36,6 +36,34 @@ class CitasController extends Controller
         tb_trabajos tt ON tc.IdTrabajo = tt.IdTrabajo 
         WHERE tc.IdCliente = $IdCliente ORDER BY tc.FechaCita DESC;");
         return view('Citas.CitasAgendadas', compact('Citas'));
+    }
+
+    public function indexGeneral()
+    {
+        $IdCliente = Auth::user()->id;
+        $Citas = DB::select("SELECT 
+        tc.IdCita, 
+        tp.NombrePersona, 
+        tt.NombreTrabajo,
+        us.name,
+        us.Telefono,        
+        (tc.Tmanana + tc.Ttarde) AS TiempoEstimado, 
+        tc.FechaCita, 
+        tc.Estado,
+        CASE 
+            WHEN tc.Tmanana > 0 THEN 'Mañana'
+            WHEN tc.Ttarde > 0 THEN 'Tarde'
+            ELSE 'Indefinido' 
+        END AS Horario
+    FROM 
+        tb_citas tc 
+    INNER JOIN 
+        tb_personal tp ON tc.IdPersonal = tp.IdPersonal 
+    INNER JOIN 
+        tb_trabajos tt ON tc.IdTrabajo = tt.IdTrabajo 
+    INNER JOIN
+		users us ON us.id = tc.IdCliente ORDER BY tc.FechaCita DESC;");
+        return view('Citas.CitasAgendadasGeneral', compact('Citas'));
     }
 
     /**
