@@ -76,12 +76,12 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credenctials)) {
-            if (Auth::user()->rol == 'Cliente') {
-                $request->session()->regenerate();
-                return redirect()->intended(route('inicio'));
-            } else {
+            if (Auth::user()->rol == 'Administrador') {
                 $request->session()->regenerate();
                 return redirect()->intended(route('vistaAdmin'));
+            } else {
+                $request->session()->regenerate();
+                return redirect()->intended(route('inicio'));
             }
 
         } else {

@@ -29,13 +29,14 @@
                 <small>{{ Auth::user()->rol }}</small>
             </div>
 
-            <div class="side-menu">
+            <div class="side-menu" style="display: flex">
                 <ul>
-                    <li><a style="text-decoration: none" href="{{ route('vistaAdmin') }}" class="active"><span class="las la-home"></span><small>Inicio</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('vistaAdmin') }}" ><span class="las la-home"></span><small>Inicio</small></a></li>
                     @if (Auth::user()->rol == 'Administrador')
                         <li><a style="text-decoration: none" href="{{ route('usuarios') }}"><span class="las la-user-alt"></span><small>Usuarios</small></a></li>
                     @endif
                     <li><a style="text-decoration: none" href="{{ route('Trabajos.index') }}"><span class="las la-cut"></span><small>Trabajos</small></a></li>
+                    <li><a style="text-decoration: none" href="{{ route('Personal.index') }}"><span class="las la-user"></span><small>Personal</small></a></li>
                     <li><a style="text-decoration: none" href="{{ route('Especialidades.index') }}"><span class="las la-gem"></span><small>Especialidades</small></a></li>
                     <li><a style="text-decoration: none" href="{{ route('Horarios.index') }}"><span class="las la-clock"></span><small>Horarios</small></a></li>
                     <li><a style="text-decoration: none" href="{{ route('Clientes.index') }}"><span class="las la-user-check"></span><small>Clientes</small></a></li>

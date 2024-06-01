@@ -20,7 +20,7 @@ class Administrador
             return $next($request);
         }
 
-        return redirect()->route('inicioL');
+        return redirect()->route('inicio');
 
         // abort(401);        
     }

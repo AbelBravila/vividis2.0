@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white border fixed-top pe-5 ps-5"
         style="position: relative; border-bottom-width: 1px">
         {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
-        <a class="navbar-brand"  href="{{route('inicio')}}">Vividi´Salon</a>
+        <a class="navbar-brand" href="{{route('inicio')}}">Vividi´Salon</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false">
@@ -31,18 +31,45 @@
                     <a class="nav-link" href="{{ route('inicio') }}" style="color:black;">Inicio</a>
                 </li>
                 @if (Auth::check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('Citas.index') }}" style="color:black;">Citas Agendadas</a>
-                    </li>
+
+                    @if (Auth::user()->rol == 'Cliente')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('Citas.index') }}" style="color:black;">Citas
+                                Agendadas</a>
+                        </li>
+                    @endif
+
+                    @if (Auth::user()->rol == 'Empleado')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('CitasEmpleado') }}" style="color:black;">Registro de
+                                Citas</a>
+                        </li>
+                    @endif
+
                 @endif
 
             </ul>
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{{ route('Agendar.index') }}"
-                        class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
-                </li>
+
+
+
+                
+                @if (Auth::check())
+                    @if (Auth::user()->rol != 'Empleado')
+                        <li class="nav-item">
+                            <a href="{{ route('Agendar.index') }}"
+                                class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item">
+                        <a href="{{ route('Agendar.index') }}"
+                            class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                    </li>
+                @endif
+
+
 
                 @if (Auth::check())
                     <li class="nav-item">
@@ -116,7 +143,7 @@
                                                                     data-bs-target="#confirm-delete{{ $cita->IdCita }}"
                                                                     class="d-flex justify-content-center mt-1"
                                                                     style="height: 18px; width: 18px" href="">
-                                                                    <img src="icons/trash-fill.svg" alt="eliminar">
+                                                                    <img src="icons/check-square.svg" alt="eliminar">
                                                                 </a>
                                                             </div>
                                                         @endif
@@ -129,7 +156,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Cancelar Cita</h5>
+                                                                        Confirmación de Cita</h5>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal"
                                                                         aria-label="Close"></button>
@@ -137,22 +164,22 @@
                                                                 <div class="modal-body">
 
                                                                     <form method="POST"
-                                                                        action="{{ route('Citas.destroy', $cita->IdCita) }}"
+                                                                        action="{{ route('ConfirmarCita', $cita->IdCita) }}"
                                                                         class="max-w-sm mx-auto">
                                                                         @csrf
-                                                                        @method('DELETE')
+                                                                        @method('PUT')
 
                                                                         <div class="modal-body">
-                                                                            ¿Desea cancelar esta cita?
+                                                                            ¿Ya ha realizado está cita?
                                                                         </div>
 
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                 class="btn btn-default"
-                                                                                data-bs-dismiss="modal">Regresar</button>
+                                                                                data-bs-dismiss="modal">No</button>
 
                                                                             <button type="submit"
-                                                                                class="btn btn-danger btn-ok">Cancelar</button>
+                                                                                class="btn btn-danger btn-ok">Si</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>

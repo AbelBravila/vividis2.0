@@ -132,7 +132,6 @@
                                                                             class="col-sm-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                                             <select id="rol{{ $usuario->id }}" name="rol" onchange="mostrarSelectEmpleado2({{ $usuario->id }})" class="form-control" placeholder="Paciente" required>
                                                                                 <option  {{($usuario->rol=="Administrador")? 'selected':'' }} value="Administrador">Administrador</option>
-                                                                                <option  {{($usuario->rol=="Secretaria")? 'selected':'' }} value="Secretaria">Secretaria</option>    
                                                                                 <option  {{($usuario->rol=="Empleado")? 'selected':'' }} value="Empleado">Empleado</option>    
                                                                             </select>
                                                                         </div>
@@ -291,8 +290,7 @@
                                 <div
                                     class="col-sm-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <select id="rol" name="rol" onchange="mostrarSelectEmpleado()" class="form-control" placeholder="Paciente" required>
-                                            <option value="Administrador">Administrador</option>
-                                            <option value="Secretaria">Secretaria</option>
+                                            <option value="Administrador">Administrador</option>                                            
                                             <option value="Empleado">Empleado</option>
                                     </select>
                                 </div>

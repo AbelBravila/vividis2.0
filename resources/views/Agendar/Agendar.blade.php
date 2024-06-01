@@ -27,21 +27,48 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('inicio')}}" style="color:black;">Inicio</a>
+                    <a class="nav-link" href="{{ route('inicio') }}" style="color:black;">Inicio</a>
                 </li>
                 @if (Auth::check())
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('Citas.index')}}" style="color:black;">Citas Agendadas</a>
-                </li>
+
+                    @if (Auth::user()->rol == 'Cliente')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('Citas.index') }}" style="color:black;">Citas
+                                Agendadas</a>
+                        </li>
+                    @endif
+
+                    @if (Auth::user()->rol == 'Empleado')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('CitasEmpleado') }}" style="color:black;">Registro de
+                                Citas</a>
+                        </li>
+                    @endif
+
                 @endif
 
             </ul>
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{{ route('Agendar.index') }}"
-                        class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
-                </li>
+
+
+
+                
+                @if (Auth::check())
+                    @if (Auth::user()->rol != 'Empleado')
+                        <li class="nav-item">
+                            <a href="{{ route('Agendar.index') }}"
+                                class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item">
+                        <a href="{{ route('Agendar.index') }}"
+                            class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                    </li>
+                @endif
+
+
 
                 @if (Auth::check())
                     <li class="nav-item">
