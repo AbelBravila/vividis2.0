@@ -25,12 +25,7 @@
                     <br>
                     <div class="col-md-12 pe-2 ps-2">
                         <div class="row col-md-12">
-                            {{-- <div class="col-5 align-content-center">
-                                <a data-bs-toggle="modal" data-bs-target="#modalGuardar"
-                                    class="btn btn-primary col-md-5">Nuevo
-                                    Registro</a>
-                            </div> --}}
-                            {{-- <form class="col-7 row align-items-center" type="get" action="{{ url('/PacientesS')}}"> --}}
+                       
                             <form class="col-7 row align-items-center" type="get" action="{{ route('ClientesS') }}">
                                 <div class="col-8">  
                                     <div

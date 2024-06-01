@@ -16,10 +16,10 @@ class Cliente
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->rol=="Administrador") {
+        if (Auth::user()->rol=="Cliente") {
             return $next($request);
         }
         
-        return redirect()->intended(route('inicioL'));
+        return redirect()->intended(route('inicio'));
     }
 }

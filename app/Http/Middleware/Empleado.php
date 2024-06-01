@@ -19,9 +19,6 @@ class Empleado
         if (Auth::user()->rol=="Empleado") {
             return $next($request);
         }
-
-
-        
-        abort(401);       
+        return redirect()->route('inicio'); 
     }
 }

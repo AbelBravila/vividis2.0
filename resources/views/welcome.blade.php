@@ -7,15 +7,16 @@
     <title>Vividi´Salon</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">  -->
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top" >
-    {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+        {{-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"> --}}
         <a class="navbar-brand" href="/inicio">Vividi´Salon</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -27,32 +28,62 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('inicio')}}" style="color:black;">Inicio</a>
+                    <a class="nav-link" href="{{ route('inicio') }}" style="color:black;">Inicio</a>
                 </li>
                 @if (Auth::check())
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('Citas.index')}}" style="color:black;">Citas Agendadas</a>
-                </li>
+
+                    @if (Auth::user()->rol == 'Cliente')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('Citas.index') }}" style="color:black;">Citas
+                                Agendadas</a>
+                        </li>
+                    @endif
+
+                    @if (Auth::user()->rol == 'Empleado')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('CitasEmpleado') }}" style="color:black;">Registro de
+                                Citas</a>
+                        </li>
+                    @endif
+
                 @endif
 
             </ul>
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{{ route('Agendar.index') }}" class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
-                </li>
-            
+
+
+
+                
                 @if (Auth::check())
-                <li class="nav-item">
-                    <a href="{{ route('CerrarSesion') }}" class="btn border border-danger btn-danger ml-xl-4">Cerrar Sesión</a>
-                </li>
+                    @if (Auth::user()->rol != 'Empleado')
+                        <li class="nav-item">
+                            <a href="{{ route('Agendar.index') }}"
+                                class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                        </li>
+                    @endif
                 @else
-                <li class="nav-item">
-                    <a href="{{ route('IniciaSesion') }}" class="btn border border-secondary btn-secondary ml-xl-4">Iniciar Sesión</a>
-                </li>
-                @endif            
+                    <li class="nav-item">
+                        <a href="{{ route('Agendar.index') }}"
+                            class="btn border border-secondary btn-transparent ml-xl-4">Agenda tu Cita</a>
+                    </li>
+                @endif
+
+
+
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <a href="{{ route('CerrarSesion') }}" class="btn border border-danger btn-danger ml-xl-4">Cerrar
+                            Sesión</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a href="{{ route('IniciaSesion') }}"
+                            class="btn border border-secondary btn-secondary ml-xl-4">Iniciar Sesión</a>
+                    </li>
+                @endif
             </ul>
-      
+
 
             {{-- <ul class="navbar-nav">
                 <li class="nav-item">
@@ -60,20 +91,20 @@
                 </li>
             </ul> --}}
 
-              {{-- <ul class="navbar-nav">
+            {{-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#contactanos">Agenda tu Cita</a>
                 </li>
             </ul> --}}
         </div>
     </nav>
-<!--inicio Section Start-->
-<section id="inicio" class="section">
+    <!--inicio Section Start-->
+    <section id="inicio" class="section">
         <div id="banner" style="padding-top: 60px;">
-      <img src="images\banner.jpg" alt="banner" style="width:100%;">
-    </div>
-      </section>
-      <!--inicio Section End-->
+            <img src="images\banner.jpg" alt="banner" style="width:100%;">
+        </div>
+    </section>
+    <!--inicio Section End-->
     <!-- Sobre Nosotros -->
     <div id="inicio">
         <section id="nosotros" class="about_section layout_padding">
@@ -136,7 +167,8 @@
                                             Cabello
                                         </h6>
                                         <p>
-                                            Realizamos servicios de peluquería como cortes, tintes, alisados y ondulaciones.
+                                            Realizamos servicios de peluquería como cortes, tintes, alisados y
+                                            ondulaciones.
                                         </p>
                                     </div>
                                 </div>
@@ -149,8 +181,10 @@
                                             Manicure y pedicure
                                         </h6>
                                         <p>
-                                            Ofrecemos tratamientos personalizados para el cuidado y el embellecimiento de tus manos y pies, asegurando que tus uñas luzcan impecables y tu piel se sienta suave y saludable.
-                                            
+                                            Ofrecemos tratamientos personalizados para el cuidado y el embellecimiento
+                                            de tus manos y pies, asegurando que tus uñas luzcan impecables y tu piel se
+                                            sienta suave y saludable.
+
                                         </p>
                                     </div>
                                 </div>
@@ -223,7 +257,7 @@
                     </span>
                 </h2>
                 <p class="text-center">
-                    Algunos testimonios de clientes 
+                    Algunos testimonios de clientes
                 </p>
                 <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -243,7 +277,10 @@
                                             Sarai Galindo
                                         </h5>
                                         <p>
-                                            ¡Estoy encantada con mi nuevo corte de cabello! El estilista escuchó atentamente lo que quería y me recomendó un estilo que se adapta perfectamente a mi rostro. El servicio fue rápido y profesional. Definitivamente volveré.!
+                                            ¡Estoy encantada con mi nuevo corte de cabello! El estilista escuchó
+                                            atentamente lo que quería y me recomendó un estilo que se adapta
+                                            perfectamente a mi rostro. El servicio fue rápido y profesional.
+                                            Definitivamente volveré.!
                                         </p>
                                     </div>
                                 </div>
@@ -260,7 +297,10 @@
                                             Laura Martínez
                                         </h5>
                                         <p>
-                                        La manicura que recibí fue excelente. El personal fue muy amable y se aseguró de que mis uñas quedaran perfectas. El ambiente del salón es muy relajante y me sentí muy cómoda durante todo el proceso. ¡Recomiendo este lugar al 100%!
+                                            La manicura que recibí fue excelente. El personal fue muy amable y se
+                                            aseguró de que mis uñas quedaran perfectas. El ambiente del salón es muy
+                                            relajante y me sentí muy cómoda durante todo el proceso. ¡Recomiendo este
+                                            lugar al 100%!
                                         </p>
                                     </div>
                                 </div>
@@ -277,7 +317,9 @@
                                             Ana Pérez
                                         </h5>
                                         <p>
-                                        El facial que me hice fue increíble. La esteticista fue muy profesional y me explicó cada paso del tratamiento. Mi piel se siente mucho más suave y radiante. ¡Es el mejor facial que he tenido en mucho tiempo
+                                            El facial que me hice fue increíble. La esteticista fue muy profesional y me
+                                            explicó cada paso del tratamiento. Mi piel se siente mucho más suave y
+                                            radiante. ¡Es el mejor facial que he tenido en mucho tiempo
                                         </p>
                                     </div>
                                 </div>
@@ -291,87 +333,90 @@
             </div>
 
         </section>
-    
-    <section class="about_section" style="padding: 30px 0px 0px 0px;">
-      <div class="container text-center text-md-start ">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>Vividis Salon Profesional
-            </h6>
-            <img src="images\lo.png" style="width: 250px;">
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Section: Social media -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Nuestras Redes Sociales
-            </h6>
-            <p>
-              <a href="https://www.facebook.com/VividiSalon/?locale=es_LA" class="text-reset"><i class="fab fa-facebook-f"></i></a>
-            </p>
-            <p>
-              <a href="https://www.instagram.com/vividisalon/" class="text-reset"><i class="fab fa-instagram"></i></a>
-            </p>
-            <p>
-              <a href="https://www.tiktok.com/@vividisalon?is_from_webapp=1&sender_device=pc" class="text-reset"><i class="fab fa-tiktok"></i></a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Section: Social media -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              SERVICIOS
-            </h6>
-            <p>
-              <a href="#inicio" class="text-reset">INICIO</a>
-            </p>
-            <p>
-              <a href="{{ route('Agendar.index') }}" class="text-reset">AGENDAR CITA</a>
-            </p>
-            <p>
-              <a href="#nosotros" class="text-reset">NOSOTROS</a>
-            </p>
-            <p>
-              <a href="#testimonios" class="text-reset">TESTIMONIOS</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">CONTACTANOS</h6>
-            <p><i class="fas fa-home me-3"></i>6TA CALLE 8-45 ZONA1,<br> BARRIO LAS CASAS, COATEPEQUE</p>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              contacto@vividisalonprofesional.com
-            </p>
-            <p><i class="fas fa-phone me-3"></i> +502 5800-0465</p>
-            <p><i class="fas fa-phone me-3"></i> +502 3997-6020</p>
-          </div>
-          <!-- Grid column -->
+
+        <section class="about_section" style="padding: 30px 0px 0px 0px;">
+            <div class="container text-center text-md-start ">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Vividis Salon Profesional
+                        </h6>
+                        <img src="images\lo.png" style="width: 250px;">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Section: Social media -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Nuestras Redes Sociales
+                        </h6>
+                        <p>
+                            <a href="https://www.facebook.com/VividiSalon/?locale=es_LA" class="text-reset"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        </p>
+                        <p>
+                            <a href="https://www.instagram.com/vividisalon/" class="text-reset"><i
+                                    class="fab fa-instagram"></i></a>
+                        </p>
+                        <p>
+                            <a href="https://www.tiktok.com/@vividisalon?is_from_webapp=1&sender_device=pc"
+                                class="text-reset"><i class="fab fa-tiktok"></i></a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Section: Social media -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            SERVICIOS
+                        </h6>
+                        <p>
+                            <a href="#inicio" class="text-reset">INICIO</a>
+                        </p>
+                        <p>
+                            <a href="{{ route('Agendar.index') }}" class="text-reset">AGENDAR CITA</a>
+                        </p>
+                        <p>
+                            <a href="#nosotros" class="text-reset">NOSOTROS</a>
+                        </p>
+                        <p>
+                            <a href="#testimonios" class="text-reset">TESTIMONIOS</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">CONTACTANOS</h6>
+                        <p><i class="fas fa-home me-3"></i>6TA CALLE 8-45 ZONA1,<br> BARRIO LAS CASAS, COATEPEQUE</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            contacto@vividisalonprofesional.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> +502 5800-0465</p>
+                        <p><i class="fas fa-phone me-3"></i> +502 3997-6020</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Copyright:Vividis Salon Profesional
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ADK</a>
         </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2024 Copyright:Vividis Salon Profesional
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ADK</a>
-    </div>
-    <!-- Copyright -->
-  {{-- </footer> --}}
-  <!-- Footer -->
+        <!-- Copyright -->
+        {{-- </footer> --}}
+        <!-- Footer -->
 </body>
 
 </html>

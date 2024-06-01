@@ -162,9 +162,4 @@ class CitasController extends Controller
             return redirect()->route('Citas.index');
         }        
     }
-
-    public function destroyAdministrador(string $id)
-    {
-        
-    }
 }
