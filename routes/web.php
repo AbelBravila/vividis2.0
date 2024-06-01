@@ -42,7 +42,31 @@ Route::resource('Trabajos', TrabajosController::class)->middleware('auth');
 Route::resource('Horarios', HorarioController::class)->middleware('auth');
 Route::resource('Personal', PersonalController::class)->middleware('auth');
 Route::resource('Especialidades', EspecialidadesController::class)->middleware('auth');
-Route::resource('Citas', CitasController::class)->middleware('auth');
+
+Route::resource('Clientes', ClienteController::class)->only([
+    'index', 'destroy', 'update'
+])->middleware(['auth', 'Administrador']);
+
+Route::get('/Registrarse', [LoginController::class, 'Registrarse'])->name('Registrarse');
+
+Route::resource('Clientes', ClienteController::class)->only([
+    'store'
+]);
+
+
+Route::get('/CitasGeneral', [CitasController::class, 'indexGeneral'])->name('Citas.IndexGeneral')->middleware(['auth', 'Administrador']);
+// Route::resource('Citas', CitasController::class)->middleware('auth');
+
+Route::resource('Citas', CitasController::class)->only([
+         'index', 'destroy'
+     ])->middleware('auth');
+
+     Route::resource('Citas', CitasController::class)->only([
+        'update'
+    ])->middleware(['auth', 'Administrador']);
+
+Route::get('/CitasS', [CitasController::class, 'buscar'])->name('CitasS')->middleware('auth');
+Route::get('/ClientesS', [ClienteController::class, 'buscar'])->name('ClientesS')->middleware('auth');
 
 Route::get('/EspecialidadesS', [EspecialidadesController::class, 'buscar'])->name('EspecialidadesS')->middleware('auth');
 Route::get('/HorariosS', [HorarioController::class, 'buscar'])->name('HorariosS')->middleware('auth');
@@ -55,6 +79,7 @@ Route::get('/FechasDisponibles{id}', [AgendarController::class, 'fechasDisponibl
 Route::post('/sesion', [LoginController::class, 'login'])->name('sesion');
 Route::get('/CerrarSesion', [LoginController::class, 'logout'])->name('CerrarSesion');
 Route::get('/IniciaSesion', [LoginController::class, 'MandarLogin'])->name('IniciaSesion');
+
 
 Route::get('/usuarios', [LoginController::class, 'index'])->name('usuarios')->middleware(['auth', 'Administrador']);
 Route::post('/Crear-usuario', [LoginController::class, 'registrar'])->name('Crear-usuario')->middleware('auth');

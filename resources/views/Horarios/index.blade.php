@@ -2,8 +2,18 @@
 @section('contenido')
 
 <header class="bg-white shadow">
-    <div class="mx-auto ps-5 pt-2 pb-2 ">
-        <h5 class="pt-2 ">Lista de Horarios</h2>
+    
+    <div class="header-content">
+        <div class="header-menu">
+        <label class="pt-2" for="menu-toggle"><span class="las la-bars"></span></label>        
+        <div class="mx-auto  pt-2 pb-2 ">
+            <h5 class="pt-1 ">Lista de Horarios</h2>
+        </div> 
+        </div>
+        <div class="user">
+            <div class="bg-img" style="background-image: url('{{ asset('images/papa.jpg') }}')"></div>
+            <span class="las la-power-off"></span><a href="{{ route('CerrarSesion') }}">Cerrar Sesión</a>
+        </div>
     </div>
 </header>
 
