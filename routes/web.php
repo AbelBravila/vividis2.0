@@ -35,6 +35,7 @@ Route::get('/', function () {
 // Route::get('/inicio', function () {
 //     return view('dashboard');
 // })->name('inicio')->middleware('auth');
+//Route::get('Personalitis', PersonalController::class,"index")->middleware('auth');
 
 Route::resource('Agendar', AgendarController::class)->middleware('auth');
 Route::resource('Trabajos', TrabajosController::class)->middleware('auth');
