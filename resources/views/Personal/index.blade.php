@@ -7,7 +7,7 @@
         <div class="header-menu">
         <label class="pt-2" for="menu-toggle"><span class="las la-bars"></span></label>        
         <div class="mx-auto  pt-2 pb-2 ">
-            <h5 class="pt-1 ">Lista de Clientes</h2>
+            <h5 class="pt-1 ">Lista de Personal</h2>
         </div> 
         </div>
         <div class="user">
