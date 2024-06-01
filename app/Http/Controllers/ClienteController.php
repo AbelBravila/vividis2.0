@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,8 +13,16 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $horarios = DB::select("Select * from tb_horarios where Estado = 'Activo'");   
-        return view('Clientes.Index', compact('horarios'));
+        $clientes = DB::select("Select * from users where Estado = 'Activo' AND rol = 'Cliente'");
+        return view('Clientes.index', compact('clientes'));
+    }
+
+
+    public function buscar()
+    {
+        $busqueda = $_GET['name'];
+        $clientes = DB::select("Select * from users where Estado = 'Activo' AND rol = 'Cliente' AND name LIKE '%$busqueda%'");
+        return view('Clientes.index', compact('clientes'));
     }
 
     /**
@@ -29,7 +38,17 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->password = $request->password;
+        $user->rol = "Cliente";
+        $user->Telefono = $request->Telefono;
+        $user->Estado = "Activo";
+        $user->IdEmpleado = 0;
+        
+        $user->save();
+        return redirect('login')->with('status', 'Usuario Creado Correctamente');
     }
 
     /**
@@ -53,7 +72,26 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:1|max:100',
+            'password' => 'required|string|min:1|max:500',
+            'Telefono' => 'required|string|min:1|max:500',
+
+        ]);
+
+        $cliente = User::findOrFail($id);
+
+
+        $cliente->update(
+            [
+                'name' => $request->name,
+                'password' => $request->password,
+                'Telefono' => $request->Telefono,
+                'IdEmpleado' => 0,
+            ]
+        );
+
+        return redirect()->route('Clientes.index');
     }
 
     /**
@@ -61,6 +99,12 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $cliente = User::findOrFail($id);
+        $cliente->update([
+            'Estado' => "Inactivo",
+        ]);
+
+        return redirect()->route('Clientes.index');
     }
 }

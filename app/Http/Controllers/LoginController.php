@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        $usuarios = DB::select("Select * from users where Estado = 'Activo' And Rol != 'Cliente'");
+        $usuarios = DB::select("Select * from users where Estado = 'Activo' And Rol != 'Cliente' AND Rol != 'Secretaria'");
         //$usuarios = DB::select("Select * from users where Estado = 'Activo'");
         $empleados = DB::select("Select * from tb_personal");
         return view('usuarios.index', compact('usuarios', 'empleados'));
@@ -61,6 +61,11 @@ class LoginController extends Controller
     {
         Auth::logout();
         return view('auth.login');
+    }
+
+    public function Registrarse()
+    {
+        return view('Usuarios.registrarse');
     }
 
     public function login(Request $request)
@@ -149,8 +154,6 @@ class LoginController extends Controller
             'Estado' => "Inactivo",
         ]);
 
-        // $user = User::findOrFail($id);
-        // $user->delete();
         return redirect()->route('usuarios');
     }
 }
