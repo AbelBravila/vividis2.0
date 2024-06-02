@@ -37,6 +37,7 @@ class PersonalController extends Controller
             tc.IdCita, 
             tp.NombrePersona, 
             tt.NombreTrabajo, 
+            us.name,
             (tc.Tmanana + tc.Ttarde) AS TiempoEstimado, 
             tc.FechaCita, 
             tc.Estado,
@@ -51,6 +52,7 @@ class PersonalController extends Controller
             tb_personal tp ON tc.IdPersonal = tp.IdPersonal 
         INNER JOIN 
             tb_trabajos tt ON tc.IdTrabajo = tt.IdTrabajo 
+        INNER JOIN users us on tc.IdCliente = us.id
             WHERE tp.IdPersonal = $IdPersonal ORDER BY tc.FechaCita DESC;");
         return view('Citas.CitasAgendadasEmpleado', compact('Citas'));
     }

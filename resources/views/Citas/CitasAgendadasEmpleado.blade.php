@@ -108,7 +108,7 @@
                                     <thead class="table-dark text-white">
                                         <tr>
                                             <th class="px-4 py-2 text-white text-center">ID</th>
-                                            <th class="px-4 py-2 text-white text-center">Especialista</th>
+                                            <th class="px-4 py-2 text-white text-center">Cliente</th>
                                             <th class="px-4 py-2 text-white text-center">Trabajo</th>
                                             <th class="px-4 py-2 text-white text-center">Horas Estimadas</th>
                                             <th class="px-4 py-2 text-white text-center">Fecha Cita</th>
@@ -125,7 +125,7 @@
                                                     <td class="border px-4 py-2 text-center">
                                                         {{ $cita->IdCita }}</td>
                                                     <td class="border px-4 py-2 text-center">
-                                                        {{ $cita->NombrePersona }}</td>
+                                                        {{ $cita->name }}</td>
                                                     <td class="border px-4 py-2 text-center">
                                                         {{ $cita->NombreTrabajo }}</td>
                                                     <td class="border px-4 py-2 text-center">
@@ -137,7 +137,7 @@
                                                     <td class="border px-4 py-2 text-center">
                                                         {{ $cita->Estado }}</td>
                                                     <td class="border px-4 py-2 text-center">
-                                                        @if ($cita->Estado == 'Pendiente')
+                                                        @if ($cita->Estado == 'Confirmado')
                                                             <div class="d-flex justify-content-center">
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#confirm-delete{{ $cita->IdCita }}"

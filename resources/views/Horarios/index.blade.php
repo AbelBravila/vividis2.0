@@ -11,7 +11,7 @@
         </div> 
         </div>
         <div class="user">
-            <div class="bg-img" style="background-image: url('{{ asset('images/papa.jpg') }}')"></div>
+            <div class="bg-img" style="background-image: url('{{ asset('images/papa.png') }}')"></div>
             <span class="las la-power-off"></span><a href="{{ route('CerrarSesion') }}">Cerrar Sesión</a>
         </div>
     </div>
@@ -225,7 +225,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Paciente</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Horario</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>

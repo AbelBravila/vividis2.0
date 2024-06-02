@@ -28,8 +28,9 @@
         <div class="about_section2 ps-5 pe-5 overflow-hidden shadow-xl sm:rounded-lg"
             style="border-radius: .5rem;  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;">
             <div class="page-header">
-                <h1>@yield('page-title', 'Dashboard')</h1>
-                <small>@yield('breadcrumb', 'Home / Dashboard')</small>
+                <h1>@yield('page-title', 'Bienvenido')</h1>
+                <h4>{{ Auth::user()->name }}</h4>
+                {{--<small>@yield('breadcrumb', 'Home / Dashboard')</small>--}}
             </div>
         </div>
 

@@ -24,7 +24,7 @@
 
         <div class="side-content">
             <div class="profile">
-                <div class="profile-img bg-img" style="background-image: url('{{ asset('images/papa.jpg') }}')"></div>
+                <div class="profile-img bg-img" style="background-image: url('{{ asset('images/papa.png') }}')"></div>
                 <h4>{{ Auth::user()->name }}</h4>
                 <small>{{ Auth::user()->rol }}</small>
             </div>

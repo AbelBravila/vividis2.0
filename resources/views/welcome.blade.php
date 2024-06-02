@@ -333,6 +333,11 @@
             </div>
 
         </section>
+        <section class="mapa">
+                <h3 style="text-align: center;" class="titulo-principal">Nuestra <span style="color: pink;">Ubicación</span></h3>
+                <p style="text-align: center;">Nuestro Establecimiento esta en el corazon de la ciudad</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.1502675003912!2d-91.86134132542524!3d14.70409287453551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858e614dae2ff35b%3A0xfb275a676565a82d!2sVividi%20Sal%C3%B3n%20Profesional%20Coatepeque!5e0!3m2!1ses-419!2sgt!4v1709397088590!5m2!1ses-419!2sgt" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
 
         <section class="about_section" style="padding: 30px 0px 0px 0px;">
             <div class="container text-center text-md-start ">
